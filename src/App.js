@@ -3,6 +3,7 @@ import LoginForm from "./components/LoginForm";
 
 function App() {
   const adminUser = {
+    username: 'admin',
     email: 'admin@opensky.api',
     password: 'admin01'
   }
@@ -12,6 +13,18 @@ function App() {
 
   const Login = details => {
     console.log(details)
+
+    if (details.email === adminUser.email && details.password === adminUser.password && details.username === adminUser.username) {
+      console.log('Logged IN')
+      setUser({
+        username: details.username,
+        email: details.email,
+        password: details.password
+      })
+    } else {
+      console.log('Details do not match')
+     
+    }
   }
 
   const Logout = () => {
