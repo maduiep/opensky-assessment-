@@ -15,7 +15,7 @@ const LoginForm = ({ Login, error}) => {
     <form onSubmit={submitHandler}>
         <div className="inner-form">
             <h2>Login</h2>
-            {}
+            {(error !== "") ? (<div className="error">{error}</div>) : ""}
             <div className="form-group">
                 <label htmlFor="username">Username: </label>
                 <input type="text" name="username" id="username" 

@@ -23,19 +23,24 @@ function App() {
       })
     } else {
       console.log('Details do not match')
-     
+      setError('Details do not match')
     }
   }
 
   const Logout = () => {
     console.log('Logout')
+    setUser({
+        username: '',
+        email: '',
+        password: ''
+    })
   }
   return (
     <div className="App">
       {(user.email !== "") ? (
         <div className="admin">
           <h2>Welcome, <span>{user.username}</span></h2>
-          <button>Logout</button>
+          <button onClick={Logout}>Logout</button>
         </div>
       ): (
         <LoginForm Login={Login} error={error}/>
