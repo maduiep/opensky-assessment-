@@ -1,10 +1,10 @@
 import React, {useState} from "react";
+import AdminTable from "./components/AdminTable";
 import LoginForm from "./components/LoginForm";
 
 function App() {
   const adminUser = {
     username: 'admin',
-    email: 'admin@opensky.api',
     password: 'admin01'
   }
 
@@ -14,11 +14,10 @@ function App() {
   const Login = details => {
     console.log(details)
 
-    if (details.email === adminUser.email && details.password === adminUser.password && details.username === adminUser.username) {
+    if (  details.username === adminUser.username && details.password ===     adminUser.password) {
       console.log('Logged IN')
       setUser({
         username: details.username,
-        email: details.email,
         password: details.password
       })
     } else {
@@ -31,17 +30,13 @@ function App() {
     console.log('Logout')
     setUser({
         username: '',
-        email: '',
         password: ''
     })
   }
   return (
     <div className="App">
-      {(user.email !== "") ? (
-        <div className="welcome">
-          <h2>Welcome, <span>{user.username}</span></h2>
-          <button onClick={Logout}>Logout</button>
-        </div>
+      {(user.username !== "") ? (
+        <AdminTable />
       ): (
         <LoginForm Login={Login} error={error}/>
       )}
